@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>single_fiducial</name>
+  <name>double_fiducial</name>
   <version>1.0.0</version>
-  <description>The single_fiducial package</description>
+  <description>The double_fiducial package</description>
 
   <maintainer email="irsyadtc89@gmail.com">irsyad</maintainer>
+
   <license>BSD</license>
 
 
@@ -32,15 +33,12 @@
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
-  <build_depend>geometry_msgs</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
-  <build_export_depend>geometry_msgs</build_export_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

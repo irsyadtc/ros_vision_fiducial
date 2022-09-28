@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import rospy
 from geometry_msgs.msg import PoseStamped
-from geometry_msgs.msg import TransformStamped
 import math
 
 import tf_conversions
@@ -12,8 +11,8 @@ def callback(data):
     
     roll_x, pitch_y, yaw_z = euler_from_quaternion(data.pose.orientation.x, data.pose.orientation.y, data.pose.orientation.z, data.pose.orientation.w)
     
-    #t = geometry_msgs.msg.TransformStamped()
-    t = TransformStamped()
+    t = geometry_msgs.msg.TransformStamped()
+    
     t.header.stamp = rospy.Time.now()
     t.header.frame_id = "base_link"
     t.child_frame_id = "camera_frame"

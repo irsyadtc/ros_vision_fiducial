@@ -1,0 +1,41 @@
+<launch>
+
+	<!-- launching camera with calibrated ost.yaml file -->
+  	<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    	<param name="video_device" value="/dev/video2" />
+    	<param name="image_width" value="640" />
+    	<param name="image_height" value="480" />
+    	<param name="pixel_format" value="yuyv" />
+    	<param name="camera_frame_id" value="usb_cam" />
+    	<param name="io_method" value="mmap"/>
+    	<param name="camera_info_url" value="file://$(find single_fiducial)/config/usb_cam.yaml"/>
+  	</node>
+  	
+  	<!-- double markers -->
+    	<arg name="marker1Id"         default="3"/>
+    	<arg name="marker2Id"         default="4"/>
+    	<arg name="markerSize"        default="0.19"/>    <!-- in m -->
+    	<arg name="eye"               default="head_camera"/>
+    	<arg name="dct_normalization" default="True" />
+    	<arg name="dct_filter_size"   default="2" />
+    	<arg name="marker1_frame"     default="marker_left" />
+    	<arg name="marker2_frame"     default="marker_right" />
+
+
+    <node pkg="aruco_ros" type="double" name="aruco_simple">    
+        <remap from="/camera_info" to="/usb_cam/camera_info" />
+        <remap from="/image" to="/usb_cam/image_raw" />
+        <param name="image_is_rectified" value="True"/>
+        <param name="marker_size" value="$(arg markerSize)"/>
+        <param name="marker_id1" value="$(arg marker1Id)"/>
+        <param name="marker_id2" value="$(arg marker2Id)"/>
+        <param name="normalizeImage" value="$(arg dct_normalization)"/>
+        <param name="dct_components_to_remove" value="$(arg dct_filter_size)"/>
+        <param name="parent_name" value="$(arg eye)"/>
+        <param name="child_name1" value="$(arg marker1_frame)" />
+        <param name="child_name2" value="$(arg marker2_frame)" />
+    </node>
+
+	<!-- transformation -->
+
+</launch>
