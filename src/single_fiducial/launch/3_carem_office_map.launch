@@ -1,7 +1,7 @@
 <launch>
 
 	<!-- carem office server -->
-  	<node name="carem_office_map" pkg="map_server" type="map_server" output="screen" args="/home/irsyad/vision_fiducial_ws/src/double_fiducial/map/carem_office.yaml">
+  	<node name="carem_office_map" pkg="map_server" type="map_server" output="screen" args="/home/irsyad/vision_fiducial_ws/src/single_fiducial/map/carem_office_221013.yaml">
   	</node>
   	
   	<!-- marker -->

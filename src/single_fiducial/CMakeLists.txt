@@ -136,7 +136,8 @@ include_directories(
 
 ## Declare a C++ executable
 add_executable(marker src/marker.cpp)
-
+add_executable(read_markers src/read_markers.cpp)
+add_executable(pose src/pose.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -149,6 +150,8 @@ add_executable(marker src/marker.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(marker ${catkin_LIBRARIES})
+target_link_libraries(read_markers ${catkin_LIBRARIES})
+target_link_libraries(pose ${catkin_LIBRARIES})
 
 
 #############

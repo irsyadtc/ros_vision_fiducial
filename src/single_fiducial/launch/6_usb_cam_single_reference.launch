@@ -2,7 +2,7 @@
 <launch>
 	<!-- launching camera with calibrated ost.yaml file -->
   	<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
-    	<param name="video_device" value="/dev/video0" />
+    	<param name="video_device" value="/dev/video0" />	<!-- either /dev/video0 or /dev/video2 -->
     	<param name="image_width" value="640" />
     	<param name="image_height" value="480" />
     	<param name="pixel_format" value="yuyv" />
@@ -15,7 +15,7 @@
 	<arg name="markerSize" default="0.19"/> <!-- in meter -->
 	<arg name="eye" default="left"/>
 	<!-- <arg name="marker_frame" default="camera_head"/> -->
-	<arg name="ref_frame" default=""/> <!-- leave empty and the pose will be published wrt param parent_name -->
+	<arg name="ref_frame" default="map"/> <!-- leave empty and the pose will be published wrt param parent_name -->
 	<arg name="corner_refinement" default="LINES" /> <!-- NONE, HARRIS, LINES, SUBPIX -->
 
 
@@ -28,6 +28,12 @@
 	<param name="camera_frame" value="camera_head"/>
 	<param name="marker_frame" value="marker_3" />
 	<param name="corner_refinement" value="$(arg corner_refinement)" />
+	</node>
+	
+	<!-- camera pose -->
+	<param name="camera_frame" value="camera_head"/>
+	<param name="reference_frame" value="map" />
+	<node pkg="single_fiducial" type="pose" name="pose" output="screen" >
 	</node>
 	
 </launch>
